@@ -410,6 +410,7 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
 
                     // we refresh input model as well
                     inputModelIndex = $scope.filteredModel[ index ][ $scope.indexProperty ];
+                    inputModelIndex = inputModelIndex || item[ $scope.indexProperty ]
                     $scope.inputModel[ inputModelIndex ][ $scope.tickProperty ] = $scope.filteredModel[ index ][ $scope.tickProperty ];
                 }
 
@@ -673,8 +674,10 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
                             type: $scope.type,
                             value :  $scope.inputLabel.labelFilter,
                             cb : function(data){
+                                data[ $scope.indexProperty] = $scope.inputModel.length;
+                                data[ $scope.spacingProperty] = 0;
+                                data.ticked = true;
                                 $scope.inputModel.push(data);
-                               //  $scope.inputModel = _.sortBy($scope.inputModel, function(el) { return el[$scope.type]; });
                                 $scope.updateFilter();
                             }
                         });
