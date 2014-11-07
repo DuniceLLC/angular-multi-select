@@ -674,7 +674,7 @@ angular.module( 'multi-select', ['ng'] ).directive( 'multiSelect' , [ '$sce', '$
                             value :  $scope.inputLabel.labelFilter,
                             cb : function(data){
                                 $scope.inputModel.push(data);
-                                $scope.inputModel = _.sortBy($scope.inputModel, function(el) { return el[$scope.type]; });
+                               //  $scope.inputModel = _.sortBy($scope.inputModel, function(el) { return el[$scope.type]; });
                                 $scope.updateFilter();
                             }
                         });
